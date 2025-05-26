@@ -251,7 +251,7 @@ export default function Chat() {
 
       {/* Huellas decorativas */}
       <Image 
-        src="../../public/huellas/chat/huella.chat1.svg" 
+        src="/huellas/chat/huella.chat1.svg" 
         alt="huella decorativa"
         position="absolute"
         bottom="10%"
@@ -261,7 +261,7 @@ export default function Chat() {
         zIndex={0}
       />
        <Image 
-        src="../../public/huellas/chat/huella.chat2.svg" 
+        src="/huellas/chat/huella.chat2.svg" 
         alt="huella decorativa"
         position="absolute"
         bottom="35%"
@@ -271,7 +271,7 @@ export default function Chat() {
         zIndex={0}
       />
         <Image 
-        src="../../public/huellas/chat/huella.chat1.svg" 
+        src="/huellas/chat/huella.chat1.svg" 
         alt="huella decorativa"
         position="absolute"
         top="5%"
@@ -281,7 +281,7 @@ export default function Chat() {
         zIndex={0}
       />
          <Image 
-        src="../../public/huellas/chat/huella.chat2.svg" 
+        src="/huellas/chat/huella.chat2.svg" 
         alt="huella decorativa"
         position="absolute"
         top="20%"

@@ -212,7 +212,7 @@ export default function Simulator() {
             onClick={handleFeed}
           >
             <Image
-              src="../../public/iconos/comidaPerro.svg"
+              src="/iconos/comidaPerro.svg"
               w="40px"
               h="40px"
             />
@@ -233,7 +233,7 @@ export default function Simulator() {
             onClick={handlePlay}
           >
             <Image
-              src="../../public/iconos/pelota.svg"
+              src="/iconos/pelota.svg"
               w="800px"
               h="40px"
             />

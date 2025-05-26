@@ -145,7 +145,7 @@ export default function Dashboard() {
 
       {/* Huellas decorativas */}
       <Image 
-        src="../../public/huellas/inicio/huella.inicio1.svg" 
+        src="/huellas/inicio/huella.inicio1.svg" 
         alt="huella decorativa"
         position="absolute"
         bottom="5%"
@@ -155,7 +155,7 @@ export default function Dashboard() {
         zIndex={0}
       />
        <Image 
-        src="../../public/huellas/inicio/huella.inicio2.svg" 
+        src="/huellas/inicio/huella.inicio2.svg" 
         alt="huella decorativa"
         position="absolute"
         bottom="15%"
@@ -165,7 +165,7 @@ export default function Dashboard() {
         zIndex={0}
       />
         <Image 
-        src="../../public/huellas/inicio/huella.inicio1.svg" 
+        src="/huellas/inicio/huella.inicio1.svg" 
         alt="huella decorativa"
         position="absolute"
         top="5%"
@@ -175,7 +175,7 @@ export default function Dashboard() {
         zIndex={0}
       />
          <Image 
-        src="../../public/huellas/inicio/huella.inicio3.svg" 
+        src="/huellas/inicio/huella.inicio3.svg" 
         alt="huella decorativa"
         position="absolute"
         top="20%"

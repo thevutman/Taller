@@ -125,7 +125,7 @@ export default function Simulator() {
           bg={statBg}
           borderRadius="15px"
           p="15px"
-          w="100%"
+          w="130%"
           display="flex"
           alignItems="center"
         >
@@ -146,7 +146,7 @@ export default function Simulator() {
           bg={statBg}
           borderRadius="15px"
           p="15px"
-          w="100%"
+          w="130%"
           display="flex"
           alignItems="center"
         >
@@ -167,7 +167,7 @@ export default function Simulator() {
           bg={statBg}
           borderRadius="15px"
           p="15px"
-          w="100%"
+          w="130%"
           display="flex"
           alignItems="center"
         >
@@ -212,7 +212,7 @@ export default function Simulator() {
             onClick={handleFeed}
           >
             <Image
-              src="https://placekitten.com/100/100"
+              src="../../public/iconos/comidaPerro.svg"
               w="40px"
               h="40px"
             />
@@ -233,8 +233,8 @@ export default function Simulator() {
             onClick={handlePlay}
           >
             <Image
-              src="https://placekitten.com/101/101"
-              w="40px"
+              src="../../public/iconos/pelota.svg"
+              w="800px"
               h="40px"
             />
           </Box>

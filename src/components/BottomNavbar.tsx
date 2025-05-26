@@ -71,8 +71,8 @@ export default function BottomNavbar() {
         <NavButton 
           icon={FaHome} 
           label="Inicio" 
-          to="/" 
-          isActive={location.pathname === '/'}
+          to="/Dashboard" 
+          isActive={location.pathname === '/Dashboard'}
         />
         <NavButton 
           icon={FaCommentDots} 
@@ -97,8 +97,8 @@ export default function BottomNavbar() {
          <NavButton 
           icon={PerfilBlancoUrl} // Usar URL del SVG blanco por defecto
           label="Perfil" 
-          to="/profile" 
-          isActive={location.pathname === '/profile'}
+          to="/" 
+          isActive={location.pathname === '/'}
            activeIcon={PerfilAmarilloUrl} // URL del SVG amarillo para activo
         />
       </HStack>

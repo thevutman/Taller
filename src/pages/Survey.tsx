@@ -52,7 +52,6 @@ export default function Survey() {
 
   const bgColor = useColorModeValue('#fdfffc', 'gray.800')
   const progressBg = useColorModeValue('#99d4fd', 'blue.500')
-  const progressFill = useColorModeValue('#90ee90', 'green.400')
   const questionBg = useColorModeValue('#f7c639', 'yellow.500')
   const questionText = useColorModeValue('#ee4e2d', 'orange.300')
   const optionBg = useColorModeValue('#99d4fd', 'blue.500')

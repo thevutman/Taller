@@ -7,6 +7,7 @@ import Chat from './pages/Chat'
 import Professionals from './pages/Professionals'
 import Profile from './pages/Profile'
 import Simulator from './pages/Simulator'
+import Dashboard from './pages/Dashboard'
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/survey" element={<Survey />} />
             <Route path="/results" element={<Results />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/professionals" element={<Professionals />} />
             <Route path="/profile" element={<Profile />} />

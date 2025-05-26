@@ -1,4 +1,4 @@
-import { Box, Text, Image, HStack, Button, useColorModeValue } from '@chakra-ui/react'
+import { Box, Text, Image, HStack, Button, useColorModeValue, Container, VStack, Avatar, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { usePetStore } from '../store/usePetStore'
 
@@ -23,9 +23,10 @@ const testimonios = [
 export default function Results() {
   const navigate = useNavigate()
   const { pet } = usePetStore()
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const handleContinue = () => {
-    navigate('/')
+    navigate('/dashboard')
   }
 
   const bgColor = useColorModeValue('#fdfffc', 'gray.800')
@@ -33,13 +34,20 @@ export default function Results() {
   const cardBg = useColorModeValue('#f7c639', 'yellow.400')
   const traitBg = useColorModeValue('#99d4fd', 'blue.400')
   const buttonBg = useColorModeValue('#ee4e2d', 'red.500')
-  const borderColor = useColorModeValue('#90ee90', 'green.300')
   const textColor = useColorModeValue('#ee4e2d', 'red.400')
   const lightTextColor = useColorModeValue('#fdfffc', 'white')
+  const modalBg = useColorModeValue('white', 'gray.700')
 
   return (
-    <Box overflowY="auto" h="100%" bg={bgColor}>
-      <Box bg={headerBg} p={5} textAlign="center">
+    <Box 
+      minH="100vh" 
+      bg={bgColor}
+      display="flex"
+      flexDirection="column"
+      position="relative"
+    >
+      {/* Header */}
+      <Box bg={headerBg} p={5} textAlign="center" position="relative">
         <Text fontSize="32px" fontWeight="bold" color={textColor} mb={2}>
           ¡Perfecto!
         </Text>
@@ -48,103 +56,137 @@ export default function Results() {
         </Text>
       </Box>
 
-      <Box
-        m={5}
-        bg={cardBg}
-        borderRadius="15px"
-        p={5}
-        textAlign="center"
-        borderWidth={2}
-        borderColor={borderColor}
+      <Box 
+        flex="1" 
+        overflowY="auto" 
+        pb={32}
+        position="relative"
       >
-        <Image
-          src={pet?.image}
-          w="150px"
-          h="150px"
-          borderRadius="75px"
-          mx="auto"
-          mb={4}
-          borderWidth={4}
-          borderColor={textColor}
-        />
-        <Text fontSize="28px" fontWeight="bold" color={textColor} mb={1}>
-          {pet?.name}
-        </Text>
-        <Text fontSize="18px" color={lightTextColor} mb={4}>
-          {pet?.type}
-        </Text>
-
-        <Box w="100%" mt={4}>
-          <Text fontSize="20px" fontWeight="bold" color={textColor} mb={3}>
-            Rasgos principales:
-          </Text>
-          {pet?.traits?.map((trait: string, index: number) => (
+        <Container maxW="container.md" py={8}>
+          <VStack spacing={8} pb={8}>
+            {/* Tarjeta de mascota */}
             <Box
-              key={index}
-              bg={traitBg}
-              p={3}
-              borderRadius="10px"
-              mb={2}
-              borderWidth={2}
-              borderColor={borderColor}
+              bg={cardBg}
+              borderRadius="20px"
+              p={6}
+              w="100%"
+              position="relative"
+              overflow="hidden"
+              boxShadow="xl"
             >
-              <Text color={lightTextColor} fontSize="16px">
-                • {trait}
-              </Text>
+              <HStack spacing={6} align="center">
+                <Box
+                  position="relative"
+                  w="120px"
+                  h="120px"
+                  borderRadius="full"
+                  overflow="hidden"
+                  borderWidth={4}
+                  borderColor="white"
+                >
+                  <Image
+                    src={pet?.image}
+                    alt={pet?.name}
+                    w="100%"
+                    h="100%"
+                    objectFit="cover"
+                  />
+                </Box>
+                <VStack align="start" spacing={2} flex={1}>
+                  <Text fontSize="24px" fontWeight="bold" color={textColor}>
+                    {pet?.name}
+                  </Text>
+                  <Text fontSize="18px" color={lightTextColor}>
+                    {pet?.type}
+                  </Text>
+                  <Button
+                    bg={buttonBg}
+                    color="white"
+                    size="sm"
+                    onClick={onOpen}
+                    _hover={{ opacity: 0.9 }}
+                  >
+                    Ver características
+                  </Button>
+                </VStack>
+              </HStack>
             </Box>
-          ))}
-        </Box>
+
+            {/* Testimonios */}
+            <VStack spacing={4} w="100%">
+              <Text fontSize="24px" fontWeight="bold" color={textColor}>
+                Lo que dicen otros dueños
+              </Text>
+              {testimonios.map((testimonio, index) => (
+                <Box
+                  key={index}
+                  bg={traitBg}
+                  borderRadius="15px"
+                  p={4}
+                  w="100%"
+                >
+                  <HStack spacing={4}>
+                    <Avatar
+                      src={testimonio.imagen}
+                      name={testimonio.nombre}
+                      size="md"
+                    />
+                    <VStack align="start" spacing={1}>
+                      <Text fontWeight="bold" color={textColor}>
+                        {testimonio.nombre}
+                      </Text>
+                      <Text color={lightTextColor}>
+                        {testimonio.texto}
+                      </Text>
+                    </VStack>
+                  </HStack>
+                </Box>
+              ))}
+            </VStack>
+
+            {/* Botón continuar */}
+            <Button
+              bg={buttonBg}
+              color="white"
+              size="lg"
+              w="100%"
+              onClick={handleContinue}
+              _hover={{
+                transform: 'translateY(-2px)',
+                shadow: 'lg',
+              }}
+              mb={8}
+            >
+              Continuar
+            </Button>
+          </VStack>
+        </Container>
       </Box>
 
-      <Box m={5}>
-        <Text fontSize="24px" fontWeight="bold" color={textColor} mb={5} textAlign="center">
-          Testimonios de dueños
-        </Text>
-        {testimonios.map((testimonio, index) => (
-          <HStack
-            key={index}
-            bg={cardBg}
-            borderRadius="15px"
-            p={4}
-            mb={4}
-            borderWidth={2}
-            borderColor={borderColor}
-          >
-            <Image
-              src={testimonio.imagen}
-              w="60px"
-              h="60px"
-              borderRadius="30px"
-              borderWidth={2}
-              borderColor={textColor}
-            />
-            <Box ml={4} flex={1}>
-              <Text fontSize="18px" fontWeight="bold" color={textColor} mb={1}>
-                {testimonio.nombre}
-              </Text>
-              <Text color={lightTextColor} fontSize="14px">
-                {testimonio.texto}
-              </Text>
-            </Box>
-          </HStack>
-        ))}
-      </Box>
-
-      <Button
-        bg={buttonBg}
-        color={lightTextColor}
-        p={4}
-        borderRadius="10px"
-        m={5}
-        w="calc(100% - 40px)"
-        fontSize="18px"
-        fontWeight="bold"
-        borderWidth={2}
-        borderColor={borderColor}
-        onClick={handleContinue}
-      >
-        Continuar
-      </Button>
+      {/* Modal de características */}
+      <Modal isOpen={isOpen} onClose={onClose} size="md">
+        <ModalOverlay />
+        <ModalContent bg={modalBg}>
+          <ModalHeader color={textColor}>Características de {pet?.name}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <VStack spacing={4} align="stretch">
+              <Box>
+                <Text fontWeight="bold" mb={2}>Personalidad:</Text>
+                <Text>{pet?.traits?.join(', ')}</Text>
+              </Box>
+              <Box>
+                <Text fontWeight="bold" mb={2}>Cuidados necesarios:</Text>
+                <Text>{pet?.care}</Text>
+              </Box>
+              <Box>
+                <Text fontWeight="bold" mb={2}>Recomendaciones:</Text>
+                <Text>{pet?.recommendations}</Text>
+              </Box>
+            </VStack>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </Box>
   )
 } 

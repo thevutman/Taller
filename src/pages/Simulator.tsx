@@ -11,6 +11,8 @@ import {
 } from '@chakra-ui/react';
 import { FaBed } from 'react-icons/fa';
 import { usePetStore } from '../store/usePetStore';
+// Importar la barra de navegación
+import BottomNavbar from '../components/BottomNavbar';
 
 // SVGs como strings
 // const huellaSimulador1 = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +63,7 @@ export default function Simulator() {
   const buttonBg = useColorModeValue('#FDCF4A', 'yellow.400');
 
   return (
-    <Box bg={bgColor} h="100%">
+    <Box bg={bgColor} h="100%" pb="60px"> {/* Add padding at the bottom */}
       {/* Header con fondo curvo */}
       <Box
         h="180px"
@@ -251,11 +253,14 @@ export default function Simulator() {
             justifyContent="center"
             onClick={handleRest}
           >
-            <Icon as={FaBed} w="32px" h="32px" color="gray.700" />
+            <Icon as={FaBed} w="40px" h="40px" color="white" /> {/* Use FaBed icon */}
           </Box>
           <Text>Descansar</Text>
         </VStack>
       </HStack>
+
+      {/* Agregar la barra de navegación al final del componente */}
+      <BottomNavbar />
     </Box>
   );
 } 

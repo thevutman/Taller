@@ -4,7 +4,7 @@ const Chat = () => {
   return (
     <Box p={4}>
       <Heading size="lg" mb={4}>Chat</Heading>
-      <Text>Funcionalidad de chat en desarrollo...</Text>
+      <Text>Funcionalidad de chat en desarrollo</Text>
     </Box>
   )
 }
